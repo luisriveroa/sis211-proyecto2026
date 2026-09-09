@@ -1,37 +1,24 @@
-# SIS-211 · Proyecto de curso (2/2026)
+# SIS-211 Proyecto 2026 — v1
 
-Un mismo software que **crece**: v1 (estructuras simples) → v2 (jerárquicas) → v3 (grafos).
+## Estudiante
+- **Nombre:** Luis Fabricio Rivero Aban 
+- **Usuario GitHub:** luisriveroa
 
-**Hoy solo existe la branch `v1`.** No creen `v2` ni `v3`.
+## Dominio
+Sistema básico de gestión de taxis/deliverys: registro de viajes,
+asignación de vehículos y control de acciones (deshacer).
 
-| | |
-| --- | --- |
-| **Estudiante** | |
-| **Dominio** | |
-| **Repo** | |
+## Repo
+https://github.com/luisriveroa/sis211-proyecto2026
 
-## Mapa v1 (mínimo tres familias distintas)
+## Mapa de estructuras (v1)
 
-Familias: arreglo, lista, pila, cola, tabla hash.  
-`dict` y `set` son **la misma** familia (hash). Sin árboles ni grafos en v1.
+| Flujo (proceso del sistema)        | Familia (estructura)         | ¿Por qué encaja? |
+|------------------------------------|------------------------------|------------------|
+| Historial de viajes/pedidos        | Lista enlazada               | Los viajes se registran uno tras otro y se recorren en orden; cada nodo es un viaje con cliente, origen, destino y monto. |
+| Deshacer última acción (cancelar asignación) | Pila (stack)         | LIFO: la última acción realizada es la primera en revertirse, sin recorrer todo el historial. |
+| Catálogo/flota de vehículos disponibles | Lista doblemente enlazada | Se recorre en ambos sentidos al buscar, reasignar o dar de baja un vehículo. |
 
-| Flujo del dominio | Qué llega / sale / se busca | Familia | La uso porque… |
-| --- | --- | --- | --- |
-| | | | |
-| | | | |
-| | | | |
-
-Cómo probar un caso límite (vacío, no encontrado o duplicado):
-
-> …
-
-## Carpetas
-
-- `src/` — clases del dominio (POO). Hoy no codeen.
-- `tests/` — un caso límite, cuando implementen.
-
-## Alcance
-
-- v1: clases en `.py` (POO). Entrega Moodle: **2026-10-07 23:59**.
-- Este README **no** sustituye la tarea de Moodle.
-- v2 y v3: otras branches, más adelante, a partir de `v1`.
+## Estructura del código
+- `src/` — clases del dominio (Viaje, Nodo, Historial, PilaAcciones, Flota)
+- `tests/` — pruebas de cada estructura (caso vacío, agregar, recorrer, deshacer)
