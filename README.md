@@ -1,31 +1,41 @@
-# SIS-211 Proyecto 2026 — v1
+# Sistema básico de taxis / delivery
 
-## Estudiante
-- **Nombre:** Luis Fabricio Rivero Aban
-- **Usuario GitHub:** luisriveroa
+**Autor:** Luis Fabricio Rivero Aban
+**Materia:** SIS211 · Proyecto V1 (Unidad 2)
 
-## Dominio
-Sistema básico de taxis / delivery: recepción de pedidos, asignación a
-conductores y deshacer la última asignación.
+## Descripción
 
-## Repo
-https://github.com/luisriveroa/sis211-proyecto2026
+Sistema simple que recibe pedidos de clientes, los asigna a conductores
+disponibles y permite deshacer la última asignación.
 
-## Mapa de estructuras (v1)
+## Estructuras de datos usadas
 
-| Flujo (proceso del sistema) | Familia (estructura) | ¿Por qué encaja? |
-|-----------------------------|----------------------|------------------|
-| El siguiente pedido a asignar | Cola | Los pedidos se atienden en el orden en que llegaron (FIFO): entran al final y sale el más antiguo. |
-| Conductor por código | Tabla hash (dict) | Necesito encontrarlo directo por su código, sin recorrer todo. |
-| Deshacer la última asignación | Pila | La última asignación hecha es la primera que se revierte (LIFO). |
+| Flujo del dominio | Familia | La uso porque... |
+| --- | --- | --- |
+| El siguiente pedido a asignar | Cola | los pedidos se atienden en el orden en que llegaron (FIFO). |
+| Conductor o cliente por código | Tabla hash (`dict`) | necesito encontrarlo directo por su código, sin recorrer todo. |
+| Deshacer la última asignación | Pila | la última asignación hecha es la primera que se revierte (LIFO). |
 
-## Estructura del código
-- `src/dominio.py` — clase `Pedido`
-- `src/conductor.py` — clase `Conductor`
-- `src/estructuras.py` — clases `Cola` (FIFO) y `Pila` (LIFO)
-- `src/sistema_taxis.py` — `SistemaTaxis`: cola de pedidos pendientes, dict de
-  conductores por código y pila de asignaciones
-- `src/main.py` — demostración de uso (ejecutar desde `src/`: `python main.py`)
+## Estructura del repositorio
 
-Al deshacer una asignación, el pedido vuelve al frente de la cola, porque era el
-más antiguo cuando se asignó y así se mantiene el orden FIFO.
+- `pedido.py`: clase `Pedido`.
+- `conductor.py`: clase `Conductor`.
+- `sistema_taxis.py`: clase `SistemaTaxis` (cola, dict y pila).
+- `main.py`: programa de demostración.
+
+## Cómo ejecutarlo
+
+Requisitos: Python 3.10 o superior (no usa librerías externas).
+
+```bash
+git clone https://github.com/USUARIO/NOMBRE-PROYECTO.git
+cd NOMBRE-PROYECTO
+python main.py
+```
+
+## Ejemplo de uso
+
+1. Se registran conductores y se crean pedidos.
+2. Se asigna el siguiente pedido de la cola a un conductor disponible.
+3. Se busca un conductor o cliente por código.
+4. Se deshace la última asignación (el pedido vuelve a la cola).
