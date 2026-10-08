@@ -28,7 +28,7 @@ disponibles y permite deshacer la última asignación.
 Requisitos: Python 3.10 o superior (no usa librerías externas).
 
 ```bash
-git clone https://github.com/USUARIO/NOMBRE-PROYECTO.git
+git clone https://github.com/luisriveroa/sis211-proyecto2026.git
 cd NOMBRE-PROYECTO
 python main.py
 ```
