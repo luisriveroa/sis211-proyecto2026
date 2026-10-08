@@ -1,6 +1,7 @@
 # Sistema básico de taxis / delivery
 
 **Autor:** Luis Fabricio Rivero Aban
+
 **Materia:** SIS211 · Proyecto V1 (Unidad 2)
 
 ## Descripción
@@ -18,24 +19,33 @@ disponibles y permite deshacer la última asignación.
 
 ## Estructura del repositorio
 
-- `pedido.py`: clase `Pedido`.
-- `conductor.py`: clase `Conductor`.
-- `sistema_taxis.py`: clase `SistemaTaxis` (cola, dict y pila).
-- `main.py`: programa de demostración.
+- `src/dominio.py`: clase `Pedido`.
+- `src/conductor.py`: clase `Conductor`.
+- `src/estructuras.py`: implementación de `Cola` y `Pila`.
+- `src/sistema_taxis.py`: clase `SistemaTaxis` (usa cola, dict y pila).
+- `src/main.py`: programa de demostración.
+- `tests/test_limites.py`: pruebas de casos límite.
 
 ## Cómo ejecutarlo
 
-Requisitos: Python 3.10 o superior (no usa librerías externas).
+Requisitos: Python 3.10 o superior (sin librerías externas).
 
 ```bash
 git clone https://github.com/luisriveroa/sis211-proyecto2026.git
-cd NOMBRE-PROYECTO
-python main.py
+cd sis211-proyecto2026
+python src/main.py
+```
+
+## Pruebas
+
+```bash
+pip install pytest
+python -m pytest tests
 ```
 
 ## Ejemplo de uso
 
 1. Se registran conductores y se crean pedidos.
 2. Se asigna el siguiente pedido de la cola a un conductor disponible.
-3. Se busca un conductor o cliente por código.
-4. Se deshace la última asignación (el pedido vuelve a la cola).
+3. Se busca un conductor por código.
+4. Se deshace la última asignación (el pedido vuelve al frente de la cola).
